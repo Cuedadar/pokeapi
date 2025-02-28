@@ -2,7 +2,7 @@
 
 This project demonstrates my understanding of fetching from an API and updating the DOM.
 
-**A live version of the site can be found at *[Netlify]()***
+**A live version of the site can be found at *[Netlify](https://jtking-pokeapi.netlify.app/)***
 
 The website uses Bootstrap 5 and vanilla Javascript to search the pokeapi https://pokeapi.co/ and display basic results.
 
