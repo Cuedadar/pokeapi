@@ -1,0 +1,10 @@
+/*
+ * Custom CSS
+ */
+.centered-text {
+  text-align: center;
+}
+
+.capitalized {
+  text-transform: capitalize;
+}
