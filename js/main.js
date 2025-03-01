@@ -4,6 +4,11 @@
 async function searchPokemon(searchTerm) {
     try {
         let result = await fetch(`https://pokeapi.co/api/v2/pokemon/${searchTerm}`);
+        if(!result.ok) {
+            let err = new Error(result.statusText);
+            err.code = result.status;
+            throw err;
+        }
         let data = await result.json();
         updateResults(data);
     } catch (error) {
@@ -43,14 +48,23 @@ function updateResults(data) {
 
 function showError(error) {
     console.log(error);
-
     let mainElement = document.getElementById('main');
-    mainElement.innerHTML = `
+
+    if (error.code === 404) {
+        mainElement.innerHTML = `
         <div class="col d-flex mx-auto">
-            <h2 class="mx-0">Pokemon Not Found or Server Error</h2>
+            <h2 class="mx-0">Pokemon Not Found</h2>
         </div>
         
     `;
+    } else {
+        mainElement.innerHTML = `
+        <div class="col d-flex mx-auto">
+            <h2 class="mx-0">Server Error</h2>
+        </div>
+        
+    `;
+    }
 }
 
 // Handle search term on form submission (could theoretically use button click event
