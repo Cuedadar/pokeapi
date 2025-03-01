@@ -4,6 +4,7 @@
 async function searchPokemon(searchTerm) {
     try {
         let result = await fetch(`https://pokeapi.co/api/v2/pokemon/${searchTerm}`);
+        // Throw custom error if we failed
         if(!result.ok) {
             let err = new Error(result.statusText);
             err.code = result.status;
